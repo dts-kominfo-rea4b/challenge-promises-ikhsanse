@@ -7,17 +7,13 @@ const promiseOutput = async (emosi) => {
   const merge = [...IXX, ...VGC];
   const arr = [];
 
-  return new Promise((resolve, reject) => {
-    if (emosi === null || emosi === "") {
-      reject("emosi not found");
-    } else {
-      for (film of merge) {
-        if (film.hasil == emosi) {
-          arr.push(film);
-        }
+  return new Promise((resolve) => {
+    for (film of merge) {
+      if (film.hasil == emosi) {
+        arr.push(film);
       }
-      resolve(arr.length);
     }
+    resolve(arr.length);
   });
 };
 
