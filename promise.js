@@ -1,7 +1,25 @@
 const { promiseTheaterIXX, promiseTheaterVGC } = require("./external.js");
 
 // TODO: Buat fungsi promiseOutput sesuai ketentuan readme
-const promiseOutput = null;
+const promiseOutput = async (emosi) => {
+  const IXX = await promiseTheaterIXX();
+  const VGC = await promiseTheaterVGC();
+  const merge = [...IXX, ...VGC];
+  const arr = [];
+
+  return new Promise((resolve, reject) => {
+    if (emosi === null || emosi === "") {
+      reject("emosi not found");
+    } else {
+      for (film of merge) {
+        if (film.hasil == emosi) {
+          arr.push(film);
+        }
+      }
+      resolve(arr.length);
+    }
+  });
+};
 
 module.exports = {
   promiseOutput,
